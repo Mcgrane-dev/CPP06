@@ -2,6 +2,7 @@
 
 bool minusCheck(const std::string& input, size_t &i);
 bool plusCheck(const std::string &input, size_t &i);
+bool validateChars(const std::string input, size_t len);
 
 int main(int ac, char **av)
 {
@@ -20,21 +21,22 @@ int main(int ac, char **av)
 	bool foundDigit = false;
 	
 	// Validate chars
-	for(size_t i = 0; i < len; i++)
-	{
-		if(!isalpha(input[i]) && !isdigit(input[i]) && input[i] != '.' 
-		&& input[i] != 'f' && input[i] != '-' && input[i] != '+')
-		{
-			std::cerr << "Invalid char found in input0\n";
-			return 1;	
-		}
-	}
-	if(input[0] == '+' && input[1] == '-')
-	{
-		std::cerr << "Invalid input\n";
+	// for(size_t i = 0; i < len; i++)
+	// {
+	// 	if(!isalpha(input[i]) && !isdigit(input[i]) && input[i] != '.' 
+	// 	&& input[i] != 'f' && input[i] != '-' && input[i] != '+')
+	// 	{
+	// 		std::cerr << "Invalid char found in input0\n";
+	// 		return 1;	
+	// 	}
+	// }
+	// if(input[0] == '+' && input[1] == '-')
+	// {
+	// 	std::cerr << "Invalid input\n";
+	// 	return 1;
+	// }
+	if(!validateChars(input, len))
 		return 1;
-	}
-
 	// Validate char positions
 	for(size_t i = 0; i < len; i++)
 	{
@@ -154,13 +156,32 @@ int main(int ac, char **av)
 	return 0;
 }
 
+bool validateChars(const std::string input, size_t len)
+{
+	for(size_t i = 0; i < len; i++)
+	{
+		if(!isalpha(input[i]) && !isdigit(input[i]) && input[i] != '.' 
+		&& input[i] != 'f' && input[i] != '-' && input[i] != '+')
+		{
+			std::cerr << "Invalid char found in input0\n";
+			return false;	
+		}
+	}
+	if(input[0] == '+' && input[1] == '-')
+	{
+		std::cerr << "Invalid input\n";
+		return false;
+	}
+	return true;
+}
+
 bool minusCheck(const std::string &input, size_t &i)
 {
 	if(input[i] == '-')
 	{
 		if(i != 0)
 		{
-			std::cerr << "Invalid char detected-\n";
+			std::cerr << "Invalid char detected '-'\n";
 			return false;
 		}
 		i++;
@@ -174,7 +195,7 @@ bool plusCheck(const std::string &input, size_t &i)
 	{
 		if(i != 0)
 		{
-			std::cerr << "Invalid char detected+\n";
+			std::cerr << "Invalid char detected '+'\n";
 			return false;
 		}
 		i++;
