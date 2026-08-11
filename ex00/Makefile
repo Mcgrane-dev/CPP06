@@ -6,9 +6,9 @@ CXXFLAGS = -Wall -Wextra -Werror -Iinclude
 OBJDIR = obj
 
 SRC = 	src/main.cpp\
+		src/ScalarConverter.cpp\
 
-
-OBJ = $(OBJDIR)/main.o #$(OBJDIR)/Bureaucrat.o 
+OBJ = $(OBJDIR)/main.o $(OBJDIR)/ScalarConverter.o 
 
 all: $(NAME)
 
@@ -19,9 +19,9 @@ $(OBJDIR)/main.o: src/main.cpp
 	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c src/main.cpp -o $(OBJDIR)/main.o
 
-# $(OBJDIR)/AForm.o: src/AForm.cpp include/AForm.hpp 
-# 	@mkdir -p $(OBJDIR)
-# 	$(CXX) $(CXXFLAGS) -c src/AForm.cpp -o $(OBJDIR)/AForm.o
+$(OBJDIR)/ScalarConverter.o: src/ScalarConverter.cpp include/ScalarConverter.hpp 
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c src/ScalarConverter.cpp -o $(OBJDIR)/ScalarConverter.o
 
 clean:
 	rm -rf $(OBJDIR) $(NAME)
