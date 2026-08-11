@@ -1,4 +1,6 @@
 #include "../include/Parser.hpp"
+#include "../include/ScalarConverter.hpp"
+
 
 bool charCheck(const size_t &len, const std::string &input)
 {

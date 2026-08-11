@@ -1,7 +1,7 @@
 #include "../include/Parser.hpp"
 #include "../include/ScalarConverter.hpp"
 
-static int convert(std::string input)
+int ScalarConverter::convert(std::string input)
 {
 	size_t len = input.length();
 	
