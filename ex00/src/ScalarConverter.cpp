@@ -38,15 +38,16 @@ int ScalarConverter::convert(std::string input)
 		if(i == (len - 1))
 		{
 			std::cout << "Int\n";
-			// conv.convert(input);
+			intLiteral(input);
 			return 0;
 		}	
 	}
 
 	// Float check
-	if(floatCheck(len, input) == 1)
+	int result = floatCheck(len, input);
+	if(result == 1)
 		return 1;
-	else if(floatCheck(len, input) == 2) // Float found
+	else if(result == 2) // Float found
 	{
 		std::cout << "Float\n";
 		// conv.convert(input);
@@ -54,13 +55,61 @@ int ScalarConverter::convert(std::string input)
 	}	
 
 	// Double check
-	if(doubleCheck(len, input) == 1)
+	result = doubleCheck(len, input);
+	if(result == 1)
 		return 1;
-	else if(doubleCheck(len, input) == 2) // Double found
+	else if(result == 2) // Double found
 	{
 		std::cout << "Double\n";
 		// conv.convert(input);
 		return 0;
 	}
 	return 0;
+}
+
+void intLiteral(std::string &input)
+{
+	try
+	{
+    	int x = std::stoi(input);
+    	char c = static_cast<char>(x);
+
+		if (std::isprint(c))
+			std::cout << "char: '" << c << "'\n";
+		else
+			std::cout << "char: Non displayable\n";
+
+		std::cout << "int: " << x << "\n";
+		std::cout << std::fixed << std::setprecision(1);
+		std::cout << "float: " << static_cast<float>(x) << "f\n";
+    	std::cout << "double: " << static_cast<double>(x) << "\n";
+	}
+	catch (const std::out_of_range&)
+	{
+		try
+		{
+			float f = std::stof(input);
+			std::cout << "char: Non displayable\n";
+			std::cout << "int: impossible\n";
+			std::cout << std::fixed << std::setprecision(1);
+			std::cout << "float: " << f << "f\n";
+			try
+			{
+				double d = std::stod(input);
+				std::cout << "doube: " << d << "\n";
+			}
+			catch(const std::exception& e)
+			{
+				std::cout << "double: impossible\n";
+			}
+		}
+		catch(const std::out_of_range&)
+		{
+			std::cout << "char: Non displayable\n";
+			std::cout << "int: impossible\n";
+
+			std::cout << "float: impossible\n";
+    		std::cout << "double: impossible\n";
+		}
+	}
 }

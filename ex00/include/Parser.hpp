@@ -1,6 +1,8 @@
 #ifndef PARSER_HPP
 #define PARSER_HPP
 
+#include <limits>
+#include <iomanip>
 #include <iostream>
 
 bool minusCheck(const std::string& input, size_t &i);
@@ -13,6 +15,7 @@ int doubleCheck(const size_t &len, const std::string &input);
 bool charCheck(const size_t &len, const std::string &input);
 bool isPseudoLiteral(const std::string& input);
 void printPseudoLiteral(const std::string &input);
+void intLiteral(std::string &input);
 
 
 #endif
