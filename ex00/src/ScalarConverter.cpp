@@ -72,13 +72,21 @@ void intLiteral(std::string &input)
 	try
 	{
     	int x = std::stoi(input);
-    	char c = static_cast<char>(x);
 
-		if (std::isprint(c))
-			std::cout << "char: '" << c << "'\n";
+		if (x < std::numeric_limits<char>::min() ||
+			x > std::numeric_limits<char>::max())
+		{
+			std::cout << "char: impossible\n";
+		}
 		else
-			std::cout << "char: Non displayable\n";
+		{
+			char c = static_cast<char>(x);
 
+			if (std::isprint(c))
+				std::cout << "char: '" << c << "'\n";
+			else
+				std::cout << "char: Non displayable\n";
+		}
 		std::cout << "int: " << x << "\n";
 		std::cout << std::fixed << std::setprecision(1);
 		std::cout << "float: " << static_cast<float>(x) << "f\n";
@@ -89,27 +97,29 @@ void intLiteral(std::string &input)
 		try
 		{
 			float f = std::stof(input);
-			std::cout << "char: Non displayable\n";
+			double d = std::stod(input);
+	
+			std::cout << "char: impossible\n";
 			std::cout << "int: impossible\n";
 			std::cout << std::fixed << std::setprecision(1);
 			std::cout << "float: " << f << "f\n";
+			std::cout << "double: " << d << "\n";
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << "char: impossible\n";
+			std::cout << "int: impossible\n";
+			std::cout << "float: impossible\n";
 			try
 			{
 				double d = std::stod(input);
-				std::cout << "doube: " << d << "\n";
+				std::cout << std::fixed << std::setprecision(1);
+				std::cout << "double: " << d << "\n";
 			}
 			catch(const std::exception& e)
 			{
 				std::cout << "double: impossible\n";
 			}
-		}
-		catch(const std::out_of_range&)
-		{
-			std::cout << "char: Non displayable\n";
-			std::cout << "int: impossible\n";
-
-			std::cout << "float: impossible\n";
-    		std::cout << "double: impossible\n";
 		}
 	}
 }
