@@ -18,7 +18,7 @@ int ScalarConverter::convert(std::string input)
 	if(len == 1 && isalpha(input[0]))
 	{
 		std::cout << "Char\n";
-		// conv.convert(input);
+		charLiteral(input);
 		return 0;
 	}
 
@@ -67,7 +67,22 @@ int ScalarConverter::convert(std::string input)
 	return 0;
 }
 
-void intLiteral(std::string &input)
+void charLiteral(const std::string &input)
+{
+	char c = input[0];
+	int x = static_cast<int>(c);
+
+	if (std::isprint(c))
+		std::cout << "char: '" << c << "'\n";
+	else
+		std::cout << "char: Non displayable\n";
+	std::cout << "int: " << x << "\n";
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(x) << "f\n";
+	std::cout << "double: " << static_cast<double>(x) << "\n";
+}
+
+void intLiteral(const std::string &input)
 {
 	try
 	{

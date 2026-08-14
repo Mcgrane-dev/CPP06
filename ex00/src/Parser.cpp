@@ -13,7 +13,7 @@ bool charCheck(const size_t &len, const std::string &input)
 	// Invalid single chars
 	if(len == 1 && !isalpha(input[0]) && !isdigit(input[0]))
 	{
-		std::cout << "Invalid char '" << input[0] << "' found in input2\n";
+		std::cout << "Invalid char '" << input[0] << "' found in input\n";
 		return false;
 	}
 	return true;
@@ -32,7 +32,7 @@ int doubleCheck(const size_t &len, const std::string &input)
 			return 1;
 		if(isalpha(input[i]))
 		{
-			std::cerr << "Invalid input5!\n";
+			std::cerr << "Invalid input!\n";
 			return 1;
 		}
 		if(input[i] == '.')
@@ -57,7 +57,7 @@ int floatCheck(const size_t &len, const std::string &input)
 			return 1;
 		if(isalpha(input[i]) && i != (len - 1))
 		{
-			std::cerr << "Invalid input1!\n";
+			std::cerr << "Invalid input!\n";
 			return 1;
 		}
 		if(input[i] == '.')
@@ -68,7 +68,7 @@ int floatCheck(const size_t &len, const std::string &input)
 		}
 		if(i == (len - 1) && input.back() == 'f' && (decFlag == false))
 		{
-			std::cerr << "Invalid input3\n";
+			std::cerr << "Invalid input\n";
 			return 1;
 		}
 	}
@@ -86,7 +86,7 @@ bool intValidation(const size_t &len, const std::string &input)
 	}
 	if(foundDigit == false)
 	{
-		std::cerr << "No digit found\n";
+		std::cerr << "Invalid input!\n";
 		return false;
 	}
 	return true;
@@ -104,7 +104,7 @@ bool charPositions(const size_t &len, const std::string &input)
 		if(!isalpha(input[i]) && !isdigit(input[i]) && input[i] != '.' 
 		&& input.back() != 'f' && input[0] != '-' && input[0] != '+')
 		{
-			std::cerr << "Invalid char found in input1\n";
+			std::cerr << "Invalid input!\n";
 			return false;
 		}
 		if(input[i] == 'f')
@@ -117,7 +117,7 @@ bool charPositions(const size_t &len, const std::string &input)
 			plus++;
 		if(f > 1 || minus > 1 || dec > 1 || plus > 1)
 		{
-			std::cerr << "Invalid input00\n";
+			std::cerr << "Invalid input!\n";
 			return false;
 		}
 	}
@@ -131,13 +131,13 @@ bool validateChars(const std::string input, size_t len)
 		if(!isalpha(input[i]) && !isdigit(input[i]) && input[i] != '.' 
 		&& input[i] != 'f' && input[i] != '-' && input[i] != '+')
 		{
-			std::cerr << "Invalid char found in input0\n";
+			std::cerr << "Invalid input!\n";
 			return false;	
 		}
 	}
 	if(input[0] == '+' && input[1] == '-')
 	{
-		std::cerr << "Invalid input\n";
+		std::cerr << "Invalid input!\n";
 		return false;
 	}
 	return true;
@@ -149,7 +149,7 @@ bool minusCheck(const std::string &input, size_t &i)
 	{
 		if(i != 0)
 		{
-			std::cerr << "Invalid char detected '-'\n";
+			std::cerr << "Invalid input!\n";
 			return false;
 		}
 		i++;
@@ -163,7 +163,7 @@ bool plusCheck(const std::string &input, size_t &i)
 	{
 		if(i != 0)
 		{
-			std::cerr << "Invalid char detected '+'\n";
+			std::cerr << "Invalid input!\n";
 			return false;
 		}
 		i++;

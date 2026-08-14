@@ -4,7 +4,6 @@
 class ScalarConverter {
 public:
 	static int convert(std::string input);
-
 };
 
 #endif

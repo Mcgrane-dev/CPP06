@@ -5,47 +5,16 @@ int main(int ac, char **av)
 {
 	if(ac != 2)
 	{
-		std::cerr << "Only 2 arguments allowed!\n";
+		std::cerr << "Need exactly 2 arguments!\n";
 		return 1;
 	}
 
 	ScalarConverter conv;
 	std::string input = av[1];
+
 	if(conv.convert(input) == 1)
 		return 1;
 	return 0;
 }
 
-void printPseudoLiteral(const std::string &input)
-{
-    std::cout << "char: impossible\n";
-    std::cout << "int: impossible\n";
-
-    if (input.back() == 'f')
-    {
-        std::cout << "float: " << input << "\n";
-        std::cout << "double: " << input.substr(0, input.size() - 1) << "\n";
-    }
-    else
-    {
-        std::cout << "float: " << input << "f\n";
-        std::cout << "double: " << input << "\n";
-    }
-}
-
-bool isPseudoLiteral(const std::string& input)
-{
-    if (input == "nan")
-        return true;
-    if (input == "nanf")
-        return true;
-    if (input == "+inf")
-        return true;
-    if (input == "-inf")
-        return true;
-    if (input == "+inff")
-        return true;
-    if (input == "-inff")
-        return true;
-    return false;
-}
+// CPP06 doesnt require you to implement escape-sequence parsing. "\n", "\t" etc

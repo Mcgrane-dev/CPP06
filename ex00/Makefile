@@ -8,8 +8,9 @@ OBJDIR = obj
 SRC = 	src/main.cpp\
 		src/ScalarConverter.cpp\
 		src/Parser.cpp\
+		src/PseudoLiteral.cpp\
 
-OBJ = $(OBJDIR)/main.o $(OBJDIR)/ScalarConverter.o $(OBJDIR)/Parser.o 
+OBJ = $(OBJDIR)/main.o $(OBJDIR)/ScalarConverter.o $(OBJDIR)/Parser.o $(OBJDIR)/PseudoLiteral.o
 
 all: $(NAME)
 
@@ -27,6 +28,10 @@ $(OBJDIR)/ScalarConverter.o: src/ScalarConverter.cpp include/ScalarConverter.hpp
 $(OBJDIR)/Parser.o: src/Parser.cpp include/Parser.hpp 
 	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c src/Parser.cpp -o $(OBJDIR)/Parser.o
+
+$(OBJDIR)/PseudoLiteral.o: src/PseudoLiteral.cpp 
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c src/PseudoLiteral.cpp -o $(OBJDIR)/PseudoLiteral.o
 
 clean:
 	rm -rf $(OBJDIR) $(NAME)
