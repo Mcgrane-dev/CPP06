@@ -67,60 +67,6 @@ int ScalarConverter::convert(std::string input)
 	return 0;
 }
 
-// void floatLiteral(const std::string &input)
-// {
-// 	// && (!(f < std::numeric_limits<char>::min()) && !(f > std::numeric_limits<char>::max()))
-// 	float f = std::stof(input);
-// 	char c = static_cast<char>(f);
-
-// 	if((f == static_cast<int>(f) && input[0] != '-'))	
-// 	{
-// 		if(std::isprint(c))
-// 			std::cout << "char: '" << c << "'\n";
-// 		else
-// 			std::cout << "char: non displayable\n";
-// 	}
-// 	else
-// 		std::cout << "char: impossible\n";
-
-// 	try
-// 	{
-// 		int x = std::stoi(input);
-// 		std::cout << "int: " << x << "\n";
-// 		std::cout << std::fixed << std::setprecision(1);
-// 		std::cout << "float: " << static_cast<float>(f) << "f\n";
-// 		std::cout << "double: " << static_cast<double>(f) << "\n";
-// 	}
-// 	catch(const std::exception& e)
-// 	{
-// 		try
-// 		{
-// 			float f = std::stof(input);
-// 			double d = std::stod(input);
-	
-// 			std::cout << "int: impossible\n";
-// 			std::cout << std::fixed << std::setprecision(1);
-// 			std::cout << "float: " << f << "f\n";
-// 			std::cout << "double: " << d << "\n";
-// 		}
-// 		catch(const std::exception& e)
-// 		{
-// 			std::cout << "int: impossible\n";
-// 			std::cout << "float: impossible\n";
-// 			try
-// 			{
-// 				double d = std::stod(input);
-// 				std::cout << std::fixed << std::setprecision(1);
-// 				std::cout << "double: " << d << "\n";
-// 			}
-// 			catch(const std::exception& e)
-// 			{
-// 				std::cout << "double: impossible\n";
-// 			}
-// 		}
-// 	}
-// }
-
 void floatLiteral(const std::string &input)
 {
 	try
@@ -189,7 +135,7 @@ void intLiteral(const std::string &input)
 		{
 			char c = static_cast<char>(x);
 
-			if (std::isprint(c))
+			if (std::isprint(static_cast<unsigned char>(c)))
 				std::cout << "char: '" << c << "'\n";
 			else
 				std::cout << "char: Non displayable\n";
