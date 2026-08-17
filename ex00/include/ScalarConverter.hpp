@@ -3,7 +3,7 @@
 
 class ScalarConverter {
 public:
-	static int convert(std::string input);
+	static int convert(const std::string &input);
 };
 
 #endif
