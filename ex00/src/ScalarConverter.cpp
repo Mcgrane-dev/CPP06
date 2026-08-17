@@ -50,7 +50,7 @@ int ScalarConverter::convert(std::string input)
 	else if(result == 2) // Float found
 	{
 		std::cout << "Float\n";
-		// conv.convert(input);
+		floatLiteral(input);
 		return 0;
 	}	
 
@@ -67,19 +67,111 @@ int ScalarConverter::convert(std::string input)
 	return 0;
 }
 
-void charLiteral(const std::string &input)
-{
-	char c = input[0];
-	int x = static_cast<int>(c);
+// void floatLiteral(const std::string &input)
+// {
+// 	// && (!(f < std::numeric_limits<char>::min()) && !(f > std::numeric_limits<char>::max()))
+// 	float f = std::stof(input);
+// 	char c = static_cast<char>(f);
 
-	if (std::isprint(c))
-		std::cout << "char: '" << c << "'\n";
-	else
-		std::cout << "char: Non displayable\n";
-	std::cout << "int: " << x << "\n";
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << static_cast<float>(x) << "f\n";
-	std::cout << "double: " << static_cast<double>(x) << "\n";
+// 	if((f == static_cast<int>(f) && input[0] != '-'))	
+// 	{
+// 		if(std::isprint(c))
+// 			std::cout << "char: '" << c << "'\n";
+// 		else
+// 			std::cout << "char: non displayable\n";
+// 	}
+// 	else
+// 		std::cout << "char: impossible\n";
+
+// 	try
+// 	{
+// 		int x = std::stoi(input);
+// 		std::cout << "int: " << x << "\n";
+// 		std::cout << std::fixed << std::setprecision(1);
+// 		std::cout << "float: " << static_cast<float>(f) << "f\n";
+// 		std::cout << "double: " << static_cast<double>(f) << "\n";
+// 	}
+// 	catch(const std::exception& e)
+// 	{
+// 		try
+// 		{
+// 			float f = std::stof(input);
+// 			double d = std::stod(input);
+	
+// 			std::cout << "int: impossible\n";
+// 			std::cout << std::fixed << std::setprecision(1);
+// 			std::cout << "float: " << f << "f\n";
+// 			std::cout << "double: " << d << "\n";
+// 		}
+// 		catch(const std::exception& e)
+// 		{
+// 			std::cout << "int: impossible\n";
+// 			std::cout << "float: impossible\n";
+// 			try
+// 			{
+// 				double d = std::stod(input);
+// 				std::cout << std::fixed << std::setprecision(1);
+// 				std::cout << "double: " << d << "\n";
+// 			}
+// 			catch(const std::exception& e)
+// 			{
+// 				std::cout << "double: impossible\n";
+// 			}
+// 		}
+// 	}
+// }
+
+void floatLiteral(const std::string &input)
+{
+	try
+	{
+    	float f = std::stof(input);
+		
+		if (f >= std::numeric_limits<char>::min() &&
+			f <= std::numeric_limits<char>::max() &&
+			f == static_cast<int>(f) && input[0] != '-')
+		{
+			char c = static_cast<char>(f);
+
+			if (std::isprint(static_cast<unsigned char>(c)))
+				std::cout << "char: '" << c << "'\n";
+			else
+				std::cout << "char: Non displayable\n";
+		}
+		else
+		{
+			std::cout << "char: impossible\n";
+		}
+		if (f >= std::numeric_limits<int>::min() &&
+			f <= std::numeric_limits<int>::max())
+		{
+			std::cout << "int: " << static_cast<int>(f) << "\n";
+		}
+		else
+		{
+			std::cout << "int: impossible\n";
+		}
+
+		std::cout << std::fixed << std::setprecision(1);
+		std::cout << "float: " << f << "f\n";
+		std::cout << "double: " << static_cast<double>(f) << "\n";
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "char: impossible\n";
+		std::cout << "int: impossible\n";
+		std::cout << "float: impossible\n";
+		try
+		{
+			double d = std::stod(input);
+			std::cout << std::fixed << std::setprecision(1);
+			std::cout << "double: " << d << "\n";
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << "double: impossible\n";
+		}
+	}
 }
 
 void intLiteral(const std::string &input)
@@ -89,7 +181,7 @@ void intLiteral(const std::string &input)
     	int x = std::stoi(input);
 
 		if (x < std::numeric_limits<char>::min() ||
-			x > std::numeric_limits<char>::max())
+			x > std::numeric_limits<char>::max() || input[0] == '-')
 		{
 			std::cout << "char: impossible\n";
 		}
@@ -137,4 +229,19 @@ void intLiteral(const std::string &input)
 			}
 		}
 	}
+}
+
+void charLiteral(const std::string &input)
+{
+	char c = input[0];
+	int x = static_cast<int>(c);
+
+	if (std::isprint(c))
+		std::cout << "char: '" << c << "'\n";
+	else
+		std::cout << "char: Non displayable\n";
+	std::cout << "int: " << x << "\n";
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(x) << "f\n";
+	std::cout << "double: " << static_cast<double>(x) << "\n";
 }
