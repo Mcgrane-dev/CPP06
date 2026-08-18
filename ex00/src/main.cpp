@@ -9,10 +9,9 @@ int main(int ac, char **av)
 		return 1;
 	}
 
-	ScalarConverter conv;
 	std::string input = av[1];
 
-	if(conv.convert(input) == 1)
+	if(ScalarConverter::convert(input))
 		return 1;
 	return 0;
 }

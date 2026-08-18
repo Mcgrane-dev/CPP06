@@ -2,6 +2,9 @@
 #define SCALAR_CONVERTER_HPP
 
 class ScalarConverter {
+private:
+	ScalarConverter();
+
 public:
 	static int convert(const std::string &input);
 };

@@ -17,7 +17,6 @@ int ScalarConverter::convert(const std::string &input)
 		return 1;
 	if(len == 1 && isalpha(input[0]))
 	{
-		std::cout << "Char\n";
 		charLiteral(input);
 		return 0;
 	}
@@ -37,7 +36,6 @@ int ScalarConverter::convert(const std::string &input)
 			break;
 		if(i == (len - 1))
 		{
-			std::cout << "Int\n";
 			intLiteral(input);
 			return 0;
 		}	
@@ -49,7 +47,6 @@ int ScalarConverter::convert(const std::string &input)
 		return 1;
 	else if(result == 2) // Float found
 	{
-		std::cout << "Float\n";
 		floatLiteral(input);
 		return 0;
 	}
@@ -60,7 +57,6 @@ int ScalarConverter::convert(const std::string &input)
 		return 1;
 	else if(result == 2) // Double found
 	{
-		std::cout << "Double\n";
 		doubleLiteral(input);
 		return 0;
 	}
