@@ -8,6 +8,7 @@
 void	intLiteral(const std::string &input);
 void 	charLiteral(const std::string &input);
 void 	floatLiteral(const std::string &input);
+void	doubleLiteral(const std::string &input);
 bool 	isPseudoLiteral(const std::string& input);
 void 	printPseudoLiteral(const std::string &input);
 bool 	plusCheck(const std::string &input, size_t &i);

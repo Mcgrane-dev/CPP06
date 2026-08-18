@@ -61,10 +61,64 @@ int ScalarConverter::convert(const std::string &input)
 	else if(result == 2) // Double found
 	{
 		std::cout << "Double\n";
-		// conv.convert(input);
+		doubleLiteral(input);
 		return 0;
 	}
 	return 0;
+}
+
+void doubleLiteral(const std::string &input)
+{
+	try
+	{
+		float f = std::stof(input);
+    	double d = std::stod(input);
+		
+		if (d >= std::numeric_limits<char>::min() &&
+			d <= std::numeric_limits<char>::max() &&
+			d == static_cast<int>(d) && input[0] != '-')
+		{
+			char c = static_cast<char>(d);
+
+			if (std::isprint(static_cast<unsigned char>(c)))
+				std::cout << "char: '" << c << "'\n";
+			else
+				std::cout << "char: Non displayable\n";
+		}
+		else
+		{
+			std::cout << "char: impossible\n";
+		}
+		if (d >= std::numeric_limits<int>::min() &&
+			d <= std::numeric_limits<int>::max())
+		{
+			std::cout << "int: " << static_cast<int>(d) << "\n";
+		}
+		else
+		{
+			std::cout << "int: impossible\n";
+		}
+
+		std::cout << std::fixed << std::setprecision(1);
+		std::cout << "float: " << f << "f\n";
+		std::cout << "double: " << d << "\n";
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "char: impossible\n";
+		std::cout << "int: impossible\n";
+		std::cout << "float: impossible\n";
+		try
+		{
+			double d = std::stod(input);
+			std::cout << std::fixed << std::setprecision(1);
+			std::cout << "double: " << d << "\n";
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << "double: impossible\n";
+		}
+	}
 }
 
 void floatLiteral(const std::string &input)
