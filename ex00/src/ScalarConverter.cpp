@@ -62,3 +62,5 @@ int ScalarConverter::convert(const std::string &input)
 	}
 	return 0;
 }
+
+ScalarConverter::ScalarConverter(){}
