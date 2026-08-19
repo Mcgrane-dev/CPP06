@@ -6,7 +6,7 @@ int main(void)
 	Data* ptr = &data;
 
 	data.name = "Test";
-	data.number = 5;
+	data.number = 3;
 
 	std::cout << "Pointer: " << ptr << "\n";
 	uintptr_t ptrInt = Serializer::serialize(ptr);
